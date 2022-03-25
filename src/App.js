@@ -5,11 +5,11 @@ import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-navbar">
+    <div className="app">
+      <header className="app-navbar">
         <Navbar />
       </header>
-      <div className="App-body">
+      <div className="app-body">
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/create" element={<CreatePie />} />

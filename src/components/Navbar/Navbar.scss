@@ -1,0 +1,76 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+
+  &-brand {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    font-size: 5rem;
+  }
+
+  &__menu {
+    height: 100%;
+    width: 100%;
+    flex: 4;
+    align-items: flex-start;
+
+    &-heading {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text-color-secondary);
+      margin: 3rem 0 1.8rem 2rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    &-list {
+      padding-left: 3rem;
+    }
+
+    &-item {
+      font-size: 1.5rem;
+      color: var(--text-color);
+      margin: 1rem 0 1rem 0rem;
+      width: 90%;
+      padding: 0.5rem 3rem;
+      font-family: 'Montserrat', sans-serif;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      transition: all 0.1s ease-in-out;
+
+      &-active {
+        background-color: rgba(#717171, 0.2);
+
+        svg {
+          color: var(--color-primary);
+        }
+      }
+      &:hover {
+        background-color: rgba(#717171, 0.2);
+      }
+
+      a {
+        font-weight: 500;
+        text-decoration: none;
+        color: var(--text-color-secondary);
+      }
+    }
+
+    &-logo {
+      height: 2rem;
+      width: auto;
+      margin-right: 1.2rem;
+
+      flex-direction: column;
+    }
+  }
+}

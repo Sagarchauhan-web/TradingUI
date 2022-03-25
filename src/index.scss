@@ -1,5 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&display=swap');
+
+// varialbles
+:root {
+  --color-primary: #72ff2d;
+  --color-secondary: #282828;
+  --text-color: #f5f5f5;
+  --text-color-secondary: #717171;
+}
+
 * {
   margin: 0;
   padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
   box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #333;
 }
