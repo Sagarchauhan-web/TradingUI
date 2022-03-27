@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { AiFillDelete, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { useState } from 'react';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import './Selector.scss';
 
