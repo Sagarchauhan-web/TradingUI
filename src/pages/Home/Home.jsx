@@ -1,12 +1,12 @@
 import './Home.scss';
-import { AiFillPieChart, AiOutlinePlus } from 'react-icons/ai';
+import { AiFillPieChart, AiOutlinePlus, AiFillDelete } from 'react-icons/ai';
+import { MdModeEditOutline } from 'react-icons/md';
+import Header from '../../components/Header/Header';
 
 const Home = () => {
   return (
     <div className="content">
-      <div className="header">
-        <h2 className="main__title">Dashboard</h2>
-      </div>
+      <Header title={'Dashboard'} />
       <div className="table__container">
         <div className="table">
           <div className="table__heading">Pie Created</div>
@@ -30,34 +30,12 @@ const Home = () => {
                 <p>4%</p>
               </div>
               <div className="table__data-item-function">
-                <div className="table__data-item-edit"></div>
-                <div className="table__data-item-delete"></div>
-              </div>
-            </div>
-
-            <div className="table__data-item">
-              <p className="table__data-item-name">Pie Name</p>
-              <div className="table__data-item-values">
-                <p>$242.54</p>
-                <p>4%</p>
-                <p>4%</p>
-              </div>
-              <div className="table__data-item-function">
-                <div className="table__data-item-edit"></div>
-                <div className="table__data-item-delete"></div>
-              </div>
-            </div>
-
-            <div className="table__data-item">
-              <p className="table__data-item-name">Pie Name</p>
-              <div className="table__data-item-values">
-                <p>$242.54</p>
-                <p>4%</p>
-                <p>4%</p>
-              </div>
-              <div className="table__data-item-function">
-                <div className="table__data-item-edit"></div>
-                <div className="table__data-item-delete"></div>
+                <div className="table__data-item-edit">
+                  <MdModeEditOutline />
+                </div>
+                <div className="table__data-item-delete">
+                  <AiFillDelete />
+                </div>
               </div>
             </div>
           </div>

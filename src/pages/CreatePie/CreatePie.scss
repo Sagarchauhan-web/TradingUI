@@ -1,0 +1,37 @@
+.pie__add {
+  padding: 0.3rem 1.5rem;
+}
+
+.pie__submit {
+  padding: 0.3rem 1.5rem;
+}
+
+.mod {
+  margin-left: -1rem;
+}
+
+.stock__percentage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+  svg {
+    font-size: 2rem;
+    &:hover:first-child {
+      color: #ff0000;
+      transform: scale(1.1);
+    }
+
+    &:hover:nth-child(3) {
+      color: rgb(0, 173, 0);
+      transform: scale(1.1);
+    }
+  }
+
+  p {
+    margin: 0 0.8rem;
+    justify-content: center;
+  }
+}
