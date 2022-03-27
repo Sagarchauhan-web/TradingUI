@@ -1,27 +1,17 @@
 import { useState } from 'react';
-import { v4 as uuid } from 'uuid';
-import { AiFillDelete, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteRow } from '../../redux/slices/pieSlice';
+import { AiFillDelete, AiOutlinePlus } from 'react-icons/ai';
 import Header from '../../components/Header/Header';
 import Selector from '../../components/Selector/Selector';
 import './CreatePie.scss';
+import { addRow } from '../../redux/slices/pieSlice';
 
 const CreatePie = () => {
-  const [rows, setRows] = useState([]);
+  const rows = useSelector((state) => state.pie);
+  const dispatch = useDispatch();
 
-  const generateId = () => {
-    let id = uuid().slice(0, 8);
-    return { id };
-  };
-
-  const addRow = () => {
-    const object = generateId();
-    setRows([...rows, object]);
-  };
-
-  const deleteRow = (id) => {
-    setRows((prevState) => prevState.filter((_id) => _id !== id));
-  };
-
+  console.log(rows);
   return (
     <div className="content">
       <Header title={'Create Pie'} />
@@ -38,14 +28,14 @@ const CreatePie = () => {
             </div>
           </div>
           <div className="table__data">
-            {rows.map((id) => {
+            {rows.map((item) => {
               return (
-                <div className="table__data-item">
-                  <Selector />
+                <div className="table__data-item" key={item.id}>
+                  <Selector id={item.id} />
                   <div className="table__data-item-function">
                     <div
                       className="table__data-item-delete"
-                      onClick={() => deleteRow(id)}
+                      onClick={() => dispatch(deleteRow(item.id))}
                     >
                       <AiFillDelete />
                     </div>
@@ -57,9 +47,14 @@ const CreatePie = () => {
         </div>
 
         <div className="btn__container">
-          <div className="pie" onClick={addRow}>
+          <div className="pie">
             <AiOutlinePlus />
-            <div className="pie__heading pie__add">Add</div>
+            <div
+              className="pie__heading pie__add"
+              onClick={() => dispatch(addRow())}
+            >
+              Add
+            </div>
           </div>
 
           <a href="#" className="pie__create pie__submit">
@@ -72,3 +67,19 @@ const CreatePie = () => {
 };
 
 export default CreatePie;
+
+// const generateId = () => {
+//   let id = uuid().slice(0, 8);
+//   return { id };
+// };
+
+// const addRow = () => {
+//   const object = generateId();
+//   setRows([...rows, object]);
+// };
+
+// const [rows, setRows] = useState([]);
+
+// const deleteRow = (id) => {
+//   setRows((prevState) => prevState.filter((_id) => _id !== id));
+// };

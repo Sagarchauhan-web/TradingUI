@@ -1,30 +1,37 @@
 import { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { IoMdArrowDropdown } from 'react-icons/io';
+import {
+  closeAllOptions,
+  Percentage,
+  toggleDropDown,
+} from '../../redux/slices/pieSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import './Selector.scss';
 
-const Selector = () => {
+const Selector = ({ id }) => {
   const [value, setValue] = useState('Company');
-  const [dropDown, setDropDown] = useState(false);
-  let [percentage, setPercentage] = useState(3);
+  const dispatch = useDispatch();
 
-  let perMinus = () => {
-    if (percentage > 2) {
-      let per = percentage - 1;
-      setPercentage(per);
-    }
-  };
+  const dropDown = useSelector((state) =>
+    state.pie.find((val) => val.id === id),
+  ).dropDown;
 
-  let perPlus = () => {
-    if (percentage < 100) {
-      let per = percentage + 1;
-      setPercentage(per);
-    }
-  };
+  let percentage = useSelector((state) =>
+    state.pie.find((val) => val.id === id),
+  ).percentage;
 
   return (
     <>
-      <div className="selector" onClick={() => setDropDown(!dropDown)}>
+      <div
+        className="selector"
+        onClick={() => {
+          if (!dropDown) {
+            dispatch(closeAllOptions());
+          }
+          dispatch(toggleDropDown(id));
+        }}
+      >
         <div className="selected">
           {value}
           <IoMdArrowDropdown />
@@ -45,24 +52,16 @@ const Selector = () => {
       </div>
 
       <div className=" stock__percentage">
-        <AiOutlineMinus onClick={perMinus} />
+        <AiOutlineMinus
+          onClick={() => dispatch(Percentage({ operation: 'minus', id }))}
+        />
         <p>{percentage}%</p>
-        <AiOutlinePlus onClick={perPlus} />
+        <AiOutlinePlus
+          onClick={() => dispatch(Percentage({ operation: 'plus', id }))}
+        />
       </div>
     </>
   );
 };
 
 export default Selector;
-
-{
-  /* <select className="select" name="names" id="names">
-    <option selected disabled>
-      Company
-    </option>
-    <option value="Apple">Apple</option>
-    <option value="Apple">Google</option>
-    <option value="Apple">Skype</option>
-    <option value="Apple">Microsoft</option>
-  </select> */
-}
